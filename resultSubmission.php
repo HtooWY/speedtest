@@ -19,10 +19,17 @@ echo '</script>';
 
 //Select database to use
 mysqli_select_db($conn,"capstone");
-$j=$_POST['download'];
+$download=$_POST['download'];
+$upload=$_POST['upload'];
+$lat=$_POST['latency'];
+$jit=$_POST['jitter'];
+$hostname=$_POST['hostname'];
+$ip=$_POST['ip'];
+$server=$_POST['testserver'];
+
 
 //Arrange an SQL statement
-$sql = "INSERT INTO capstone.capstonespeedtest VALUES (default, $j, 1, 1, 1, 'test', 'test', 'test', NOW());";
+$sql = "INSERT INTO capstone.capstonespeedtest VALUES (default, $download, $upload, $lat, $jit, $server, $ip, $hostname, NOW());";
 
 //Query using the arranged SQL statment and retrieve the result from the DB.
 $result = mysqli_query($conn, $sql);
