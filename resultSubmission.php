@@ -29,7 +29,7 @@ $server=$_POST['testserver'];
 
 
 //Arrange an SQL statement
-$sql = "INSERT INTO capstone.capstonespeedtest VALUES (default, $download, $upload, $lat, $jit, $server, $ip, $hostname, NOW());";
+$sql = "INSERT INTO capstone.capstonespeedtest VALUES (default, $download, $upload, $lat, $jit, 'test','test','test', NOW());";
 
 //Query using the arranged SQL statment and retrieve the result from the DB.
 $result = mysqli_query($conn, $sql);
