@@ -19,7 +19,7 @@ echo '</script>';
 
 //Select database to use
 mysqli_select_db($conn,"capstone");
-$j=$_POST=['download']
+$j=$_POST['download'];
 
 //Arrange an SQL statement
 $sql = "INSERT INTO capstone.capstonespeedtest VALUES (default, $j, 1, 1, 1, 'test', 'test', 'test', NOW());";
