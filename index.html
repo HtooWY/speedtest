@@ -402,6 +402,9 @@
                 dataset.data=[];
             });
             window.myLine.update();
+			
+			configPie.data.datasets[0].data= [0,100];
+			window.myPie.update();
             msgDiv.innerHTML = "<h3>--------------- Test Result ---------------</h3><h4>" +
                 "Speed test in progress. Please wait...</h4>";
             SomApi.startTest();
