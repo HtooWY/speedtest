@@ -95,8 +95,6 @@
 	
 	
 	</div>
-	<!-- ########## -->
-
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
@@ -109,12 +107,8 @@
 	<script>
 
 		
-		var linechart;
+		
         var msgDiv = document.getElementById("msg");
-        var prgsDiv = document.getElementById("prgs");
-		var textDiv = document.getElementById("text");
-		var fillcolor='rgba(0, 0, 255, 0.3)'
-		var fillcoloryellow='rgba(255, 255, 0, 0.3)'
 		
 
 		function csrfSafeMethod(method) {
@@ -129,113 +123,6 @@
 				}
 			}
 		});
-//##############################################/
-
-        var config = {
-            type: 'line',
-            data: {
-                labels: [],
-                datasets: [{
-                    label: "Download dataset",
-                    data: [],
-                    fill: true,
-					backgroundColor:fillcolor,
-					pointBorderWidth: 1,
-                    
-                },
-				{
-                    label: "Upload dataset",
-                    data: [],
-                    fill: true,
-					backgroundColor:fillcoloryellow,
-					pointBorderWidth: 1,
-                    
-                }]
-            },
-            options: {
-                responsive: true,
-                title:{
-                    display:true,
-                    text:'Download/upload progress'
-                },
-                tooltips: {
-                    mode: 'label',
-                    callbacks: {
-                        // beforeTitle: function() {
-                        //     return '...beforeTitle';
-                        // },
-                        // afterTitle: function() {
-                        //     return '...afterTitle';
-                        // },
-                        // beforeBody: function() {
-                        //     return '...beforeBody';
-                        // },
-                        // afterBody: function() {
-                        //     return '...afterBody';
-                        // },
-                        // beforeFooter: function() {
-                        //     return '...beforeFooter';
-                        // },
-                        // footer: function() {
-                        //     return 'Footer';
-                        // },
-                        // afterFooter: function() {
-                        //     return '...afterFooter';
-                        // },
-                    }
-                },
-                hover: {
-                    mode: 'dataset'
-                },
-                scales: {
-                    xAxes: [{
-                        display: true,
-                        scaleLabel: {
-							display: true,
-                            show: true,
-                            labelString: 'Timestamp'
-                        }
-                    }],
-                    yAxes: [{
-                        display: true,
-                        scaleLabel: {	
-							display: true,
-                            show: true,
-                            labelString: 'Speed (Mpbs)'
-                        },
-                        ticks: {
-                            suggestedMin: 0,
-                            suggestedMax: 10,
-                        }
-                    }]
-                }
-            }
-        };
-		
-		var configPie = {
-			type: 'pie',
-			data: {
-				datasets: [{
-					data: [
-						0,
-						100,
-
-					],
-					backgroundColor: [
-						"#F7464A",
-
-					],
-				
-				}],
-				labels: [
-					"Percent done",
-					
-				]
-			},
-			options: {
-				responsive: true,
-			}
-		};
         
 
         window.onload = function() {
@@ -264,10 +151,6 @@
 			*/
 			
         }
-
-        
-
-        
     </script>
   </body>
 </html>
