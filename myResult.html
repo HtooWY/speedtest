@@ -107,12 +107,8 @@
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
 	
 	<script>
-        SomApi.account = "SOM5797926b8285c";  // API Key here
-        SomApi.domainName = "testingspeed.herokuapp.com";
-        SomApi.onTestCompleted = onTestCompleted;
-        SomApi.onError = onError;
-        SomApi.onProgress = onProgress;
-	
+
+		var msgDiv = document.getElementById("msg");
 		var linechart;
         var msgDiv = document.getElementById("msg");
         var prgsDiv = document.getElementById("prgs");
@@ -243,7 +239,7 @@
         
 
         window.onload = function() {
-            msgDiv.innerHTML = userip;
+            msgDiv.innerHTML = "my ip address is "+	userip;
 		
         };
 
