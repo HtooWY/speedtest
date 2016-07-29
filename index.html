@@ -260,6 +260,7 @@
                 },
                 scales: {
                     xAxes: [{
+						
                         display: true,
                         scaleLabel: {
 							display: true,
@@ -431,33 +432,11 @@
             var JSONobject = {"download": testResult.download, "upload": testResult.upload, "latency": testResult.latency,
 								"jitter": testResult.jitter, "testserver": testResult.testServer,"ip": testResult.ip_address,
 								"hostname": testResult.hostname};
-			var jsonData = JSON.stringify( JSONobject );
-			
-			/*
-			$.ajaxSetup({
-				beforeSend: function(xhr, settings) {
-					if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
-						xhr.setRequestHeader("X-CSRFToken", csrftoken);
-					}
-				}
-			});
-			*/
-			console.log(typeof(testResult.hostname));
-			console.log(typeof(testResult.testServer));
+
 			$.post("/resultSubmission.php",JSONobject,function(result)//we got the response
 			   {
-				alert('Successfully called');
+
 			   });
-			
-			//##############################################/
-			
-            //$.post("/resultSubmission.php",{json_string:jsonData});
-			
-//##############################################/
-
-
-
-
             
         }
 
@@ -499,6 +478,7 @@
 			
 			count+=1
 			*/
+			
 			if (count>10){
 				
 					
@@ -512,6 +492,11 @@
 				config.data.labels.push('');
 			}
 			
+			/*
+			var d =new Date();
+			var time = d.getHours()+":"+d.getMinutes()+":"+d.getSeconds()
+			config.data.labels.push(time);
+			*/
 			if (progress.type=="download"){
 				config.data.datasets[0].data.push(progress.currentSpeed);
 				config.data.datasets[1].data.push(null);
@@ -521,6 +506,8 @@
 			
 			window.myLine.update();
 			count+=1
+			
+			// updating pie chart
 			if (pass==progress.pass){
 				configPie.data.datasets[0].data[0]=progress.percentDone
 				configPie.data.datasets[0].data[1]=100-progress.percentDone

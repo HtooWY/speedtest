@@ -36,6 +36,10 @@
 	
 	<script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	
+	<!-- Getting the IP address form the ll2io  -->
+	<script type="text/javascript" src="https://l2.io/ip.js?var=userip"></script>
+	
     <style>
     canvas{
         -moz-user-select: none;
@@ -73,8 +77,8 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="/index.html">Test Speed</a></li>
-            <li><a href="/myresult.html">My Results</a></li>
+            <li><a href="/index.html">Test Speed</a></li>
+            <li class="active"><a href="/myresult.html">My Results</a></li>
             <li><a href="../../line.html">About</a></li>
           </ul>
         </div><!--/.nav-collapse -->
@@ -82,41 +86,14 @@
     </nav>
 
     <div class="container" style="position:relative">
-
+		<div class="starter-template" id="msg" style="float:left; margin-top:50px; margin-right:10px"></div>
      
 	
-    <div class="starter-template" id="prgs" style="float:left; margin-top:50px; margin-right:10px"></div>
-    <div class="starter-template" id="msg" style="float:left; margin-top:50px; margin-right:10px"></div>
-	
-    <div class="starter-template" style="clear:both;"><br /><button style="width:150px" id="btnStart" type="button" onclick="btnStartClick()">Start Test</button><br /></div>
-
-        
 
     </div><!-- /.container -->
 	<div class="container" style="margin-top=500; margin-right:30px">
 	
-	<div style="width:50%; margin-right:10px; float:left;">
-        <canvas id="canvas"></canvas>
-    </div>
 	
-	<div style="margin-right:10px; float:left;">
-	<div id="piechart">
-        <canvas id="chart-area" style="position:relative; "></canvas>
-	</div>
-		<div class="starter-template" id="text" style="text-align: center; margin-top:50px;"></div>
-		
-    </div>
-	<!--
-	<div id="canvas-holder" style="float:left; width:50% margin-right:30px">
-        <canvas id="chart-area" width="300" height="300" />
-    </div>
-	-->
-	</div>
-	<!-- Highchartjs test-->
-	<!--
-	<div class="container" style="margin-top=1000">
-	<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
-	-->
 	</div>
 	<!-- ########## -->
 
@@ -129,10 +106,6 @@
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
 	
-	<!-- Highchartjs test-->
-	<script src="https://code.highcharts.com/highcharts.js"></script>
-	<script src="https://code.highcharts.com/modules/exporting.js"></script>
-	<!-- ########## -->
 	<script>
         SomApi.account = "SOM5797926b8285c";  // API Key here
         SomApi.domainName = "testingspeed.herokuapp.com";
@@ -270,7 +243,7 @@
         
 
         window.onload = function() {
-            
+            msgDiv.innerHTML = userip;
 		
         };
 
@@ -296,122 +269,9 @@
 			
         }
 
-        function onTestCompleted(testResult) {
-            msgDiv.innerHTML = "<h3>--------------- Test Result ---------------</h3><h4>" +
-                "Download: " + testResult.download + " Mbps <br/>" +
-                "Upload: " + testResult.upload + " Mbps <br/>" +
-                "Latency: " + testResult.latency + " ms <br/>" +
-                "Jitter: " + testResult.jitter + " ms <br/>" +
-                "Test Server: " + testResult.testServer + "<br/>" +
-                "IP: " + testResult.ip_address + "<br/>" +
-                "Hostname: " + testResult.hostname + "<br/>" +
-            "</h4>";
+        
 
-            var JSONobject = {"download": testResult.download, "upload": testResult.upload, "latency": testResult.latency,
-								"jitter": testResult.jitter, "testserver": testResult.testServer,"ip": testResult.ip_address,
-								"hostname": testResult.hostname};
-			var jsonData = JSON.stringify( JSONobject );
-			
-			/*
-			$.ajaxSetup({
-				beforeSend: function(xhr, settings) {
-					if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
-						xhr.setRequestHeader("X-CSRFToken", csrftoken);
-					}
-				}
-			});
-			*/
-			console.log(typeof(testResult.hostname));
-			console.log(typeof(testResult.testServer));
-			$.post("/resultSubmission.php",JSONobject,function(result)//we got the response
-			   {
-				alert('Successfully called');
-			   });
-			
-			//##############################################/
-			
-            //$.post("/resultSubmission.php",{json_string:jsonData});
-			
-//##############################################/
-
-
-
-
-            
-        }
-
-        function onError(error) {
-            msgDiv.innerHTML = "Error " + error.code + ": " + error.message;
-        }
-		
-		var pass=0
-		var count=0
-        function onProgress(progress) {
-            prgsDiv.innerHTML =
-            "<h3>--------------- Progress ---------------</h3><h4>" +
-                "Progress Type: " + progress.type + "<br/>" +
-                "Pass: " + progress.pass + "<br/>" +
-                "Percent Done: " + progress.percentDone + "% <br/>" +
-                "Current Speed: " + progress.currentSpeed + " Mbps <br/>" +
-            "</h4>";
-			
-			textDiv.innerHTML = "<center>Pass: "+progress.pass+"</center><br/><center>Percent Done: "+progress.percentDone+"%</center>";
-			<!-- -->
-			/*
-			if (count>5){
-				
-					
-				var d =new Date();
-				var time = d.getHours()+":"+d.getMinutes()+":"+d.getSeconds()
-				config.data.labels.push(time);
-				if (progress.type=="download"){
-					config.data.datasets[0].data.push(progress.currentSpeed);
-					config.data.datasets[1].data.push(null);
-				} else {
-					config.data.datasets[1].data.push(progress.currentSpeed);
-				}
-				
-				window.myLine.update();
-				
-				count=0
-			}
-			
-			count+=1
-			*/
-			if (count>10){
-				
-					
-				var d =new Date();
-				var time = d.getHours()+":"+d.getMinutes()+":"+d.getSeconds()
-				config.data.labels.push(time);
-				
-				
-				count=0
-			} else{
-				config.data.labels.push('');
-			}
-			
-			if (progress.type=="download"){
-				config.data.datasets[0].data.push(progress.currentSpeed);
-				config.data.datasets[1].data.push(null);
-			} else {
-				config.data.datasets[1].data.push(progress.currentSpeed);
-			}
-			
-			window.myLine.update();
-			count+=1
-			if (pass==progress.pass){
-				configPie.data.datasets[0].data[0]=progress.percentDone
-				configPie.data.datasets[0].data[1]=100-progress.percentDone
-			}else {
-				configPie.data.datasets[0].data[0]=0
-				configPie.data.datasets[0].data[1]=100
-			}
-			
-			pass=progress.pass
-			window.myPie.update();
-			
-        }
+        
     </script>
   </body>
 </html>
