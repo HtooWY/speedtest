@@ -1,32 +1,17 @@
- <?php
-
-// Login credentials
-$servername = "capstoneskyeye.cfyrhe0diz6p.us-west-2.rds.amazonaws.com:3306";
-$username = "resultSubmission";
-$password = "reply1988";
-
-// Create connection
-$conn = mysqli_connect($servername, $username, $password);
-
-// Check connection
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
-echo "Connected successfully";
-
-//Select database to use
-mysqli_select_db($conn,"capstone");
-$ip=$GET['ip'];
-echo "Lmao"
-
-/*
-//Arrange an SQL statement
-$sql = "INSERT INTO capstone.capstonespeedtest VALUES (default, $download, $upload, $lat, $jit, '$server','$ip','$hostname', NOW());";
-
-//Query using the arranged SQL statment and retrieve the result from the DB.
-$result = mysqli_query($conn, $sql);
-
-*/
-// Close connection after submitting the test result to the database
-$conn->close();
-?>  
+<?php
+				echo "<table>";
+				echo "<tr>";
+				echo "<th>Timestamp</th>";
+				echo "<th>IP Address</th>";
+				echo "<th>Download</th>";
+				echo "<th>Upload</th>";
+				echo "<th>Jitter</th>";
+				echo "<th>Test Server</th>";
+				echo "<th>Host</th>";
+				echo "</tr>";
+				
+				
+				echo "</table>";
+				// Close connection after submitting the test result to the database
+				$conn->close();
+?>

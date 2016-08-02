@@ -15,7 +15,7 @@
     <title>Capstone SpeedTest for Certis Cisco</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="/dist/css/bootstrap.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link href="/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
@@ -145,17 +145,13 @@
         
 
         window.onload = function() {
-            msgDiv.innerHTML = "<h3>--------------- MY Results ---------------</h3>"+"<?php
-				echo "testing";
-				echo "<table>";
-				echo "<tr>";
-				echo "<th>Company</th>";
-				echo "<th>Contact</th>";
-				echo "<th>Country</th>";
-				echo "</tr>";
-				echo "</table>";
-				
-			?>";
+            // msgDiv.innerHTML = userip+"<h3>--------------- MY Results ---------------</h3>"+";
+			var JSONobject = {"ip":userip};
+
+			$.get("/getresults.php",JSONobject,function(result)//we got the response
+			   {
+					msgDiv.innerHTML=result;
+			   });
 			
         };
 
