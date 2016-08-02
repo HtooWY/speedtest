@@ -126,11 +126,17 @@
         
 
         window.onload = function() {
+			msgDiv.innerHTML = "<?php
+				echo "testing";
+				
+			?>";
+		/*
 		var JSONobject = {"ip": userip};
 			$.get( "/getresults.php",JSONobject, function( result ) {
 				$('#msgDiv').html=result;
 				alert(result);
 			});
+			*/
 			/*
             msgDiv.innerHTML = "my ip address is "+
 			<?php
