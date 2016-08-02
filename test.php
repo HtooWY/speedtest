@@ -126,11 +126,10 @@
         
 
         window.onload = function() {
-            msgDiv.innerHTML = 
-			<?php
+            msgDiv.innerHTML = "<?php
 				echo "testing";
 				
-			?>;
+			?>";
 			
         };
 
