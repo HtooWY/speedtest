@@ -126,9 +126,9 @@
         
 
         window.onload = function() {
-            msgDiv.innerHTML = "my ip address is "+
+            msgDiv.innerHTML = 
 			<?php
-				echo 'testing ';
+				echo "testing";
 				
 			?>;
 			
