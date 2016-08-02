@@ -131,6 +131,12 @@
         window.onload = function() {
             msgDiv.innerHTML = "<h3>--------------- MY Results ---------------</h3>"+"<?php
 				echo "testing";
+				echo "<table>";
+				echo "<tr>";
+				echo "<th>Company</th>";
+				echo "<th>Contact</th>";
+				echo "<th>Country</th>";
+				echo "</tr>";
 				
 			?>";
 			
