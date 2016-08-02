@@ -28,22 +28,7 @@
 
 	//Query using the arranged SQL statment and retrieve the result from the DB.
 	$result = mysqli_query($conn, $sql);
-	if (mysqli_num_rows($result) > 0) {
-		// output data of each row
-		while($row = mysqli_fetch_assoc($result)) {
-			echo "<tr>";
-			echo "<th>". $row["TestTime"]. "</th>";
-			echo "<th>". $row["IP"]. "</th>";
-			echo "<th>". $row["Download"]. "</th>";
-			echo "<th>". $row["Upload"]. "</th>";
-			echo "<th>". $row["Jitter"]. "</th>";
-			echo "<th>". $row["TestServer"]. "</th>";
-			echo "<th>". $row["Host"]. "</th>";
-			echo "</tr>";
-		}
-	} else {
-		
-	}
+	
 	
 	echo "</table>";
 				
