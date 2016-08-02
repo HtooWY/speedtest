@@ -137,6 +137,7 @@
 				echo "<th>Contact</th>";
 				echo "<th>Country</th>";
 				echo "</tr>";
+				echo "</table>";
 				
 			?>";
 			
