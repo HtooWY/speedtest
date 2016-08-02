@@ -151,6 +151,7 @@
 			$.get("/getresults.php",JSONobject,function(result)//we got the response
 			   {
 					msgDiv.innerHTML=result;
+					console.log(result);
 			   });
 			
         };

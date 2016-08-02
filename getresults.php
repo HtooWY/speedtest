@@ -12,6 +12,7 @@
 				
 				
 				echo "</table>";
+				echo json_encode("troll"):;
 				// Close connection after submitting the test result to the database
 				$conn->close();
 ?>
