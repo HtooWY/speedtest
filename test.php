@@ -86,7 +86,9 @@
     </nav>
 
     <div class="container" style="position:relative">
-		
+		<div class="starter-template" id="result" style="float:left; margin-top:50px; margin-right:10px">
+			
+		</div>
 		<div class="starter-template" id="msg" style="float:left; margin-top:50px; margin-right:10px"></div>
 	
 
@@ -109,6 +111,7 @@
 		
 		
         var msgDiv = document.getElementById("msg");
+		var resultDiv=document.getElementById("result");
 		
 
 		function csrfSafeMethod(method) {
@@ -126,7 +129,7 @@
         
 
         window.onload = function() {
-            msgDiv.innerHTML = "<?php
+            msgDiv.innerHTML = "<h3>--------------- MY Results ---------------</h3>"+"<?php
 				echo "testing";
 				
 			?>";
