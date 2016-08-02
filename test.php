@@ -150,7 +150,7 @@
 
 			$.get("/getresults.php",JSONobject,function(result)//we got the response
 			   {
-					msgDiv.innerHTML=result;
+					alert(result);
 					
 			   });
 			
